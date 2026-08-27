@@ -1,0 +1,54 @@
+@model AboutMe
+
+@{
+    ViewData["Title"] = "Hakkımda Kaydını Düzenle";
+}
+
+<h1>Hakkımda Kaydını Düzenle</h1>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="MainMessage" class="form-label"></label>
+        <textarea asp-for="MainMessage" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CatchPhrase" class="form-label"></label>
+        <input asp-for="CatchPhrase" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="NameSurname" class="form-label"></label>
+        <input asp-for="NameSurname" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="JobName" class="form-label"></label>
+        <input asp-for="JobName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="photoFile" class="form-label">Profil Fotoğrafı</label>
+        @if (!string.IsNullOrWhiteSpace(Model.PhotoUrl))
+        {
+            <div class="mb-2">
+                <img src="@Model.PhotoUrl" style="max-width:120px" class="rounded d-block" />
+                <span class="text-muted small">Mevcut fotoğraf. Yeni bir dosya seçmezsen bu kalır.</span>
+            </div>
+        }
+        <input type="file" id="photoFile" name="photoFile" class="form-control" accept="image/png, image/jpeg" />
+        <div class="form-text">PNG veya JPG, en fazla 5 MB.</div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Icons" class="form-label"></label>
+        <input asp-for="Icons" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Biography" class="form-label"></label>
+        <textarea asp-for="Biography" class="form-control" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

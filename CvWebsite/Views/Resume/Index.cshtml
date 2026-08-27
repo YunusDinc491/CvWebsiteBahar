@@ -1,0 +1,40 @@
+@model IEnumerable<Resume>
+
+@{
+    ViewData["Title"] = "Özgeçmiş";
+}
+
+<div class="page-band">
+    <div class="container">
+        <h1 class="section-heading justify-content-center"><span class="brand-dot"></span> Özgeçmiş</h1>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0">Deneyim</h4>
+            <a href="~/files/cv.pdf" class="btn btn-pill btn-brand">CV İndir</a>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="experience-card text-muted">
+                Henüz deneyim eklenmedi. Admin panelinden ekleyebilirsin.
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="experience-card row">
+                    <div class="col-md-3">
+                        <div class="year">@item.WorkingTime</div>
+                        <div class="job-position mt-1">@item.JobPosition</div>
+                        <div class="company-name mt-2">@item.CompanyName</div>
+                        <div class="company-location">@item.CompanyLocation</div>
+                    </div>
+                    <div class="col-md-9">
+                        <p class="mb-0">@item.Explanation</p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

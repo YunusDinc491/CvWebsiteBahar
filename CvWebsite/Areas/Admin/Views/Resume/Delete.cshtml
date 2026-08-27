@@ -1,0 +1,21 @@
+@model Resume
+
+@{
+    ViewData["Title"] = "Deneyimi Sil";
+}
+
+<h1>Bu kaydı silmek istediğinize emin misiniz?</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.CompanyName)</dt>
+    <dd class="col-sm-9">@Model.CompanyName</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.JobPosition)</dt>
+    <dd class="col-sm-9">@Model.JobPosition</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

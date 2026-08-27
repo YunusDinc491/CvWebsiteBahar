@@ -1,0 +1,24 @@
+@model Contact
+
+@{
+    ViewData["Title"] = "Mesaj Detayı";
+}
+
+<h1>Mesaj</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Gönderen</dt>
+    <dd class="col-sm-9">@Model.FirstName @Model.LastName</dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Konu</dt>
+    <dd class="col-sm-9">@Model.Subject</dd>
+
+    <dt class="col-sm-3">Mesaj</dt>
+    <dd class="col-sm-9">@Model.Message</dd>
+</dl>
+
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Sil</a>
+<a asp-action="Index" class="btn btn-secondary">Listeye dön</a>

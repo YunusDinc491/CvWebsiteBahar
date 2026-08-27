@@ -1,0 +1,23 @@
+@model Certificate
+
+@{
+    ViewData["Title"] = "Sertifikayı Sil";
+}
+
+<h1>Bu sertifikayı silmek istediğinize emin misiniz?</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Title)</dt>
+    <dd class="col-sm-9">@Model.Title</dd>
+</dl>
+
+@if (!string.IsNullOrWhiteSpace(Model.PhotoUrl))
+{
+    <img src="@Model.PhotoUrl" style="max-width:160px" class="rounded mb-3" />
+}
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

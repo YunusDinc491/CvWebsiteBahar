@@ -1,0 +1,45 @@
+@model AboutMe
+
+@{
+    ViewData["Title"] = "Hakkımda Detayı";
+}
+
+<h1>Detay</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Title)</dt>
+    <dd class="col-sm-9">@Model.Title</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.MainMessage)</dt>
+    <dd class="col-sm-9">@Model.MainMessage</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.CatchPhrase)</dt>
+    <dd class="col-sm-9">@Model.CatchPhrase</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.NameSurname)</dt>
+    <dd class="col-sm-9">@Model.NameSurname</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.JobName)</dt>
+    <dd class="col-sm-9">@Model.JobName</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.PhotoUrl)</dt>
+    <dd class="col-sm-9">
+        @if (!string.IsNullOrWhiteSpace(Model.PhotoUrl))
+        {
+            <img src="@Model.PhotoUrl" style="max-width:120px" class="rounded" />
+        }
+        else
+        {
+            <span class="text-muted">-</span>
+        }
+    </dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Icons)</dt>
+    <dd class="col-sm-9">@Model.Icons</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Biography)</dt>
+    <dd class="col-sm-9">@Model.Biography</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Düzenle</a>
+<a asp-action="Index" class="btn btn-secondary">Listeye dön</a>

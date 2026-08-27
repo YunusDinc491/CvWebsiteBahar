@@ -1,0 +1,21 @@
+@model Contact
+
+@{
+    ViewData["Title"] = "Mesajı Sil";
+}
+
+<h1>Bu mesajı silmek istediğinize emin misiniz?</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Gönderen</dt>
+    <dd class="col-sm-9">@Model.FirstName @Model.LastName</dd>
+
+    <dt class="col-sm-3">Konu</dt>
+    <dd class="col-sm-9">@Model.Subject</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

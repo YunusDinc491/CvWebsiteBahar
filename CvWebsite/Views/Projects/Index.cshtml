@@ -1,0 +1,38 @@
+@model IEnumerable<Project>
+
+@{
+    ViewData["Title"] = "Projeler";
+}
+
+<div class="page-band">
+    <div class="container">
+        <h1 class="section-heading justify-content-center"><span class="brand-dot"></span> Projeler</h1>
+
+        @if (!Model.Any())
+        {
+            <p class="text-center text-muted">Henüz proje eklenmedi. Admin panelinden ekleyebilirsin.</p>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="project-card row g-0 align-items-stretch">
+                    <div class="col-md-8">
+                        <div class="project-body">
+                            <div class="project-name h5 mb-1">@item.ProjectName</div>
+                            <div class="role-title mb-3">@item.RoleTitle</div>
+                            @if (!string.IsNullOrWhiteSpace(item.MainExplanation))
+                            {
+                                <p class="text-muted">@item.MainExplanation</p>
+                            }
+                            <p class="mb-0">@item.Explanation</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="project-photo" src="@(string.IsNullOrWhiteSpace(item.PhotoUrl) ? "https://placehold.co/400x300" : item.PhotoUrl)" alt="@item.ProjectName" />
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

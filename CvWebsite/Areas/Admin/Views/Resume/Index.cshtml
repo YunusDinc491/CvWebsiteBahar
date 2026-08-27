@@ -1,0 +1,38 @@
+@model IEnumerable<Resume>
+
+@{
+    ViewData["Title"] = "Özgeçmiş";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Özgeçmiş</h1>
+    <a asp-action="Create" class="btn btn-primary">+ Yeni Deneyim</a>
+</div>
+
+<table class="table table-striped bg-white">
+    <thead>
+        <tr>
+            <th>CompanyName</th>
+            <th>JobPosition</th>
+            <th>WorkingTime</th>
+            <th>CompanyLocation</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.CompanyName</td>
+            <td>@item.JobPosition</td>
+            <td>@item.WorkingTime</td>
+            <td>@item.CompanyLocation</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Detay</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Düzenle</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

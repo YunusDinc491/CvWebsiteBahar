@@ -1,0 +1,60 @@
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @ViewData["BrandName"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md">
+            <div class="container">
+                <a class="navbar-brand site-brand" asp-controller="Home" asp-action="Index">
+                    <span class="brand-dot"></span>
+                    <span class="brand-name">@ViewData["BrandName"]</span>
+                    <span class="brand-sep">/</span>
+                    <span class="brand-title">@ViewData["BrandTitle"]</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav"
+                        aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="siteNav">
+                    <ul class="navbar-nav site-nav">
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Home" ? "active" : "")" asp-controller="Home" asp-action="Index">Hakkımda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Resume" ? "active" : "")" asp-controller="Resume" asp-action="Index">Özgeçmiş</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Projects" ? "active" : "")" asp-controller="Projects" asp-action="Index">Projeler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-controller="Contact" asp-action="Index">İletişim</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer text-center py-4">
+        <small>&copy; @DateTime.Now.Year - @ViewData["BrandName"]</small>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

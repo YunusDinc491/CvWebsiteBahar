@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin | CvWebsite</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            background: var(--band-bg);
+        }
+
+        /* ---------- Sidebar ---------- */
+        .admin-sidebar {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #6d28d9 0%, #a21caf 55%, #db2777 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-sidebar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, .18), transparent 45%);
+            pointer-events: none;
+        }
+
+        .admin-sidebar .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .admin-sidebar .sidebar-brand .brand-dot {
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+        }
+
+        .admin-sidebar .nav {
+            position: relative;
+            z-index: 1;
+            gap: .15rem;
+        }
+
+        .admin-sidebar .nav-link {
+            color: rgba(255, 255, 255, .78);
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: .9rem;
+            padding: .55rem .9rem;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .admin-sidebar .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, .14);
+            transform: translateX(3px);
+        }
+
+        .admin-sidebar .nav-link.active {
+            color: #4c1d95;
+            background: #fff;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
+        }
+
+        .admin-content {
+            padding: 2rem;
+        }
+
+        /* ---------- Cards ---------- */
+        .admin-content .card {
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 10px 26px rgba(109, 40, 217, .1);
+            transition: transform .25s ease, box-shadow .25s ease;
+            border-top: 4px solid var(--brand-blue);
+            overflow: hidden;
+        }
+
+        .admin-content .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 34px rgba(109, 40, 217, .18);
+        }
+
+        .admin-content .card.accent-pink { border-top-color: var(--brand-pink); }
+        .admin-content .card.accent-green { border-top-color: var(--brand-green); }
+        .admin-content .card.accent-purple { border-top-color: var(--brand-blue); }
+        .admin-content .card.accent-amber { border-top-color: #f59e0b; }
+
+        /* ---------- Buttons ---------- */
+        .admin-content .btn-primary {
+            background: var(--brand-gradient);
+            border: none;
+            box-shadow: 0 8px 18px rgba(139, 92, 246, .28);
+            transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+        }
+
+        .admin-content .btn-primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.06);
+            box-shadow: 0 12px 22px rgba(236, 72, 153, .32);
+        }
+
+        .admin-content .btn-outline-primary {
+            color: var(--brand-blue);
+            border-color: var(--brand-blue);
+        }
+
+        .admin-content .btn-outline-primary:hover {
+            background: var(--brand-gradient);
+            border-color: transparent;
+            transform: translateY(-1px);
+        }
+
+        .admin-content .btn-outline-secondary:hover {
+            background: #6b7280;
+            border-color: #6b7280;
+            transform: translateY(-1px);
+        }
+
+        .admin-content .btn-outline-danger:hover {
+            transform: translateY(-1px);
+        }
+
+        .admin-content .btn {
+            border-radius: 8px;
+        }
+
+        /* ---------- Tables ---------- */
+        .admin-content .table {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 26px rgba(109, 40, 217, .08);
+        }
+
+        .admin-content .table thead {
+            background: var(--brand-gradient-soft);
+        }
+
+        .admin-content .table thead th {
+            border-bottom: none;
+            color: #4c1d95;
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .admin-content .table > tbody > tr {
+            transition: background .15s ease;
+        }
+
+        .admin-content .table > tbody > tr:hover {
+            background: rgba(139, 92, 246, .06) !important;
+        }
+
+        /* ---------- Forms ---------- */
+        .admin-content .form-control:focus {
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 .2rem rgba(139, 92, 246, .15);
+        }
+
+        .admin-content h1 {
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .admin-content dl.row dt {
+            color: #7c7189;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <nav class="admin-sidebar flex-shrink-0 p-3" style="width: 220px;">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="sidebar-brand mb-4 text-white text-decoration-none">
+                <span class="brand-dot"></span>
+                <span class="fs-5 fw-bold">CvWebsite Admin</span>
+            </a>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">Panel</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="AboutMe" asp-action="Index">Hakkımda</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Resume" asp-action="Index">Özgeçmiş</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Project" asp-action="Index">Projeler</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Certificate" asp-action="Index">Sertifikalar</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Contact" asp-action="Index">Mesajlar</a></li>
+                <li class="nav-item mt-3"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">&larr; Siteye dön</a></li>
+            </ul>
+        </nav>
+        <main class="admin-content flex-grow-1">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Highlight the current section in the sidebar.
+        (function () {
+            var current = "@(ViewContext.RouteData.Values["controller"])";
+            document.querySelectorAll(".admin-sidebar .nav-link").forEach(function (link) {
+                if (link.getAttribute("href") && link.textContent.trim() !== "" ) {
+                    var isActive = link.pathname.toLowerCase().indexOf("/admin/" + current.toLowerCase()) === 0;
+                    if (isActive) link.classList.add("active");
+                }
+            });
+        })();
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

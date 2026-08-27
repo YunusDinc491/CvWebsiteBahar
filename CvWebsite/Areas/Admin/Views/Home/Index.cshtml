@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Panel";
+}
+
+<h1 class="mb-4">Yönetim Paneli</h1>
+
+<div class="row g-3">
+    <div class="col-md-4 col-lg-3">
+        <div class="card accent-purple h-100">
+            <div class="card-body">
+                <h5 class="card-title">Hakkımda</h5>
+                <p class="card-text text-muted">Ana sayfa tanıtım bilgilerini düzenle.</p>
+                <a asp-controller="AboutMe" asp-action="Index" class="btn btn-primary btn-sm">Yönet</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="card accent-pink h-100">
+            <div class="card-body">
+                <h5 class="card-title">Projeler</h5>
+                <p class="card-text text-muted">Proje listesini düzenle.</p>
+                <a asp-controller="Project" asp-action="Index" class="btn btn-primary btn-sm">Yönet</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="card accent-purple h-100">
+            <div class="card-body">
+                <h5 class="card-title">Özgeçmiş</h5>
+                <p class="card-text text-muted">İş deneyimlerini düzenle.</p>
+                <a asp-controller="Resume" asp-action="Index" class="btn btn-primary btn-sm">Yönet</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="card accent-green h-100">
+            <div class="card-body">
+                <h5 class="card-title">Sertifikalar</h5>
+                <p class="card-text text-muted">Sertifika kartlarını düzenle.</p>
+                <a asp-controller="Certificate" asp-action="Index" class="btn btn-primary btn-sm">Yönet</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="card accent-amber h-100">
+            <div class="card-body">
+                <h5 class="card-title">Mesajlar</h5>
+                <p class="card-text text-muted">Gelen iletişim mesajlarını görüntüle.</p>
+                <a asp-controller="Contact" asp-action="Index" class="btn btn-primary btn-sm">Görüntüle</a>
+            </div>
+        </div>
+    </div>
+</div>

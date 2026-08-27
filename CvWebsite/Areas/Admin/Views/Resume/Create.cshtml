@@ -1,0 +1,33 @@
+@model Resume
+
+@{
+    ViewData["Title"] = "Yeni Deneyim";
+}
+
+<h1>Yeni Deneyim</h1>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="CompanyName" class="form-label"></label>
+        <input asp-for="CompanyName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="JobPosition" class="form-label"></label>
+        <input asp-for="JobPosition" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="WorkingTime" class="form-label"></label>
+        <input asp-for="WorkingTime" class="form-control" placeholder="ör. 2022 - 2024" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CompanyLocation" class="form-label"></label>
+        <input asp-for="CompanyLocation" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Explanation" class="form-label"></label>
+        <textarea asp-for="Explanation" class="form-control" rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

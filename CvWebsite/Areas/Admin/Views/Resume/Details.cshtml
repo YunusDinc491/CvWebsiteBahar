@@ -1,0 +1,27 @@
+@model Resume
+
+@{
+    ViewData["Title"] = "Deneyim Detayı";
+}
+
+<h1>Detay</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.CompanyName)</dt>
+    <dd class="col-sm-9">@Model.CompanyName</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.JobPosition)</dt>
+    <dd class="col-sm-9">@Model.JobPosition</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.WorkingTime)</dt>
+    <dd class="col-sm-9">@Model.WorkingTime</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.CompanyLocation)</dt>
+    <dd class="col-sm-9">@Model.CompanyLocation</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Explanation)</dt>
+    <dd class="col-sm-9">@Model.Explanation</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Düzenle</a>
+<a asp-action="Index" class="btn btn-secondary">Listeye dön</a>

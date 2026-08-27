@@ -1,0 +1,27 @@
+@model Project
+
+@{
+    ViewData["Title"] = "Proje Detayı";
+}
+
+<h1>Detay</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.ProjectName)</dt>
+    <dd class="col-sm-9">@Model.ProjectName</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.RoleTitle)</dt>
+    <dd class="col-sm-9">@Model.RoleTitle</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.MainExplanation)</dt>
+    <dd class="col-sm-9">@Model.MainExplanation</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Explanation)</dt>
+    <dd class="col-sm-9">@Model.Explanation</dd>
+
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.PhotoUrl)</dt>
+    <dd class="col-sm-9">@Model.PhotoUrl</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Düzenle</a>
+<a asp-action="Index" class="btn btn-secondary">Listeye dön</a>

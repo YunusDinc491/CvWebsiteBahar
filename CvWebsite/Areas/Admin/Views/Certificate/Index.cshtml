@@ -1,0 +1,45 @@
+@model IEnumerable<Certificate>
+
+@{
+    ViewData["Title"] = "Sertifikalar";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Sertifikalar</h1>
+    <a asp-action="Create" class="btn btn-primary">+ Yeni Sertifika</a>
+</div>
+
+<table class="table table-striped bg-white align-middle">
+    <thead>
+        <tr>
+            <th>Fotoğraf</th>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td style="width:80px;">
+                @if (!string.IsNullOrWhiteSpace(item.PhotoUrl))
+                {
+                    <img src="@item.PhotoUrl" style="width:60px;height:60px;object-fit:cover;" class="rounded" />
+                }
+                else
+                {
+                    <span class="text-muted">-</span>
+                }
+            </td>
+            <td>@item.Title</td>
+            <td>@(item.Description.Length > 60 ? item.Description.Substring(0, 60) + "…" : item.Description)</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Detay</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Düzenle</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

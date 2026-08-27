@@ -1,0 +1,48 @@
+@model Contact
+
+@{
+    ViewData["Title"] = "İletişim";
+}
+
+<div class="page-band">
+    <div class="container">
+        <h1 class="section-heading justify-content-center"><span class="brand-dot"></span> Hadi Konuşalım</h1>
+
+        <div class="contact-card">
+            @if (ViewBag.Sent == true)
+            {
+                <div class="alert alert-success">Mesajınız için teşekkürler, en kısa sürede dönüş yapacağım.</div>
+            }
+
+            <form asp-controller="Contact" asp-action="Index" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FirstName" class="form-label">Ad *</label>
+                        <input asp-for="FirstName" class="form-control" required />
+                        <span asp-validation-for="FirstName" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="LastName" class="form-label">Soyad *</label>
+                        <input asp-for="LastName" class="form-control" required />
+                        <span asp-validation-for="LastName" class="text-danger small"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">E-posta *</label>
+                    <input asp-for="Email" type="email" class="form-control" required />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Subject" class="form-label">Konu</label>
+                    <input asp-for="Subject" class="form-control" />
+                </div>
+                <div class="mb-4">
+                    <label asp-for="Message" class="form-label">Mesaj</label>
+                    <textarea asp-for="Message" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-pill btn-brand">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>
